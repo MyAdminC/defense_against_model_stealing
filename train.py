@@ -17,19 +17,35 @@ fashion_mnist = keras.datasets.fashion_mnist
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
                'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 train_images = train_images / 255.0
-
 test_images = test_images / 255.0
 
-model = keras.Sequential([
+
+
+list1=[]
+list1_1=[]
+
+list2=[]
+list2_2=[]
+tot = 0
+for i in train_labels:
+    list1.append(train_images[tot])
+    list1_1.append(i)
+    tot+=1
+
+train_images_1 = np.array(list1)
+train_labels_1 = np.array(list1_1)
+
+print(train_images_1.shape)
+
+model1 = keras.Sequential([
     keras.layers.Flatten(input_shape=(28, 28)),
     keras.layers.Dense(128, activation=tf.nn.relu),
-    keras.layers.Dense(10, activation=tf.nn.softmax)
+    keras.layers.Dense(5, activation=tf.nn.softmax)
 ])
-
-model.compile(optimizer='adam',
+model1.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-model.fit(train_images, train_labels, epochs=5)
+model1.fit(train_images_1, train_labels_1, epochs=5)
 
-model.save('model.h5')
+model1.save('model1.h5')
