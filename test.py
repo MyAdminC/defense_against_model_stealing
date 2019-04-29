@@ -6,4 +6,7 @@ from __future__ import absolute_import, division, print_function
 from tensorflow import keras
 import numpy as np
 
-print(np.clip(np.round([0.99999],3)-1,0.0000001,0.99999999))
+p1 =np.array([2,3,4])
+p2=np.array([4,5,6])
+
+print(np.sum(abs(p1-p2))/len(p1))

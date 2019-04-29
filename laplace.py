@@ -13,7 +13,7 @@ def noisyCount(sensitivety, epsilon):
     else:
         n_value = beta * np.log(u2)
     #print(n_value)
-    return n_value
+    return n_value/100
 
 
 def laplace_mech(data, sensitivety, epsilon):
@@ -23,7 +23,8 @@ def laplace_mech(data, sensitivety, epsilon):
 
 
 if __name__ == '__main__':
-    x = [100,99,20]
+    x = [0.83,0.12,0.36]
+    my_new_list = [i * 100 for i in x]
     sensitivety = 1
     epsilon = 1
     data = laplace_mech(x, sensitivety, epsilon)
